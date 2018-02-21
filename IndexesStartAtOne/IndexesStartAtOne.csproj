@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <Version>0.1.0</Version>
+    <Authors>Grégoire Geis</Authors>
+    <Description>Allows the customization of where indexes start in C#. Not only can you force Roslyn to interpret items[1] as items[0], but also items[-42] and items[1_000_000] if you want! The sky (and common sense) are the only limits!</Description>
+    <Copyright>Copyright 2018 (c) Grégoire Geis</Copyright>
+
+    <PacakgeTitle>$(ProjectName)</PacakgeTitle>
+    <PackageId>$(ProjectName)</PackageId>
+
+    <RepositoryUrl>https://github.com/6A/IndexesStartAtOne</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageLicenseUrl>$(RepositoryUrl)/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageTags>cometary;analyzer;roslyn;crazy;indexing</PackageTags>
+
+    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
+
+    <NoWarn>1701;1702;1705;NU1603</NoWarn>
+    <WarningLevel>4</WarningLevel>
+
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Remove="Microsoft.NETLibrary" />
+
+    <PackageReference Include="Cometary.Core" Version="0.1.2-pre" />
+  </ItemGroup>
+
+</Project>
