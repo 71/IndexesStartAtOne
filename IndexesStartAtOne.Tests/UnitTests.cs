@@ -2,28 +2,18 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-#if ONE
 [assembly: IndexesStartAtOne]
-#else
-[assembly: IndexesStartAt(5)]
-#endif
 
 namespace IndexesStartAt.Tests
 {
     public static class UnitTests
     {
-#if ONE
-        private const int OFFSET = 1;
-#else
-        private const int OFFSET = 5;
-#endif
-
         private static readonly int[] Values = { 4, 8, 15, 16, 23, 42 };
 
         [Test]
         public static void ShouldIndexWithConstants()
         {
-            Assert.AreEqual(Values[5], 4);
+            Assert.AreEqual(Values[1], 4);
         }
 
         [Test]
@@ -38,7 +28,7 @@ namespace IndexesStartAt.Tests
         [Test]
         public static void ShouldIndexWithVariables()
         {
-            for (int i = OFFSET; i < Values.Length + OFFSET; i++)
+            for (int i = 1; i <= Values.Length; i++)
             {
                 Assert.DoesNotThrow(() =>
                 {
@@ -57,8 +47,8 @@ namespace IndexesStartAt.Tests
                 { 7, 8, 9 }
             };
 
-            Assert.AreEqual(m[OFFSET, OFFSET], 1);
-            Assert.AreEqual(m[2 + OFFSET, 2 + OFFSET], 9);
+            Assert.AreEqual(m[1, 1], 1);
+            Assert.AreEqual(m[3, 3], 9);
         }
 
         [Test]
